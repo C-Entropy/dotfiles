@@ -1,0 +1,56 @@
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %mode%
+; Default: %mode%
+label-mode = %mode%
+label-mode-padding = 2
+;label-mode-background = #e60053
+label-mode-background = #504945
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-focused = %icon%  %name%
+;label-focused-foreground = #ffffff
+label-focused-foreground = #fbf1c7
+;label-focused-background = #3f3f3f
+label-focused-background = #3c3836
+;label-focused-underline = #fba922
+label-focused-underline = #d65d0e
+label-focused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-unfocused =  %icon%  %name%
+label-unfocused-foreground = #fbf1c7
+label-unfocused-background = #504945
+label-unfocused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-visible =  %icon%  %name%
+label-visible-underline = #555555
+label-visible-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent =  %icon%  %name%
+;label-urgent-foreground = #ffffff
+label-urgent-foreground = #fbf1c7
+;label-urgent-background = #bd2c40
+label-urgent-background = #cc241d
+label-urgent-padding = 4
+

@@ -1,0 +1,128 @@
+g++ rqnoj72.cpp -g -Wall
+./a.out 
+g++ rqnoj72.cpp -g -Wall
+./a.out 
+g++ rqnoj72.cpp -g -Wall
+./a.out 
+g++ rqnoj72.cpp -g -Wall
+./a.out 
+./a.out 
+./a.out 
+g++ rqnoj72.cpp -g -Wall
+./a.out 
+g++ rqnoj72.cpp -g -Wall
+./a.out 
+g++ rqnoj72.cpp -g -Wall
+./a.out 
+g++ poj2492.cpp -g -Wall
+./a.out 
+./a.out 
+g++ poj2492.cpp -g -Wall
+./a.out 
+g++ poj2492.cpp -g -Wall
+./a.out 
+g++ poj2492.cpp -g -Wall
+./a.out 
+g++ poj2492.cpp -g -Wall
+./a.out 
+g++ poj2492.cpp -g -Wall
+./a.out 
+g++ a.cpp -g -Wall
+./a.out 
+g++ a.cpp -g -Wall
+g++ a.cpp -g -Wall
+5 1000500 500100 300700 800300 400200 50
+./a.out 
+g++ a.cpp -g -Wall
+g++ a.cpp -g -Wall
+./a.out 
+g++ a.cpp  -g -Wall
+./a.out 
+g++ a.cpp  -g -Wall
+./a.out 
+g++ a.cpp  -g -Wall
+./a.out 
+g++ a.cpp  -g -Wall
+./a.out 
+g++ a.cpp  -g -Wall
+g++ a.cpp  -g -Wall
+./a.out 
+g++ a.cpp  -g -Wall
+./a.out 
+cd gitc/learn/
+g++ rqnoj98.cpp -g -Wall
+g++ rqnoj98.cpp -g -Wall
+./a.out 
+g++ rqnoj98.cpp -g -Wall
+./a.out 
+g++ a.cpp -g -Wall
+./a.out 
+g++ a.cpp -g -Wall
+g++ a.cpp -g -Wall
+./a.out 
+g++ a.cpp -g -Wall
+./a.out 
+g++ a.cpp -g -Wall
+./a.out 
+g++ a.cpp -g -Wall
+./a.out 
+g++ a.cpp -g -Wall
+./a.out 
+g++ a.cpp -g -Wall
+g++ a.cpp -g -Wall
+./a.out 
+mkdir a
+cp a.py  a
+ls a
+cd a
+python3 setup.py sdist
+l
+ls
+cd dist/
+ls
+cd ..
+python3 setup.py install
+sudo python3 setup.py install
+ls
+cd build/
+ls
+cd lib/
+ls
+cd ..
+cd .
+cd ..
+ls
+cat MANIFEST 
+python3 setup.py install
+python3 setup.py sdist
+removing 'a-1.1.0' (and everything under it)cd
+cd ..
+mkdir HFP
+cd HFP/
+mkdir c3
+rm data.out 
+ls
+rm Man.data Other.data 
+ls
+rm data.out 
+ls
+cat Man.data 
+rm Man.data  Other.data 
+ls
+cat Man.data 
+cat Man.data 
+cat Man.pickle 
+ls
+ls
+cat Man
+ls
+cd ../c5/
+;s
+ls
+cat james.txt 
+,s
+ls
+mkdir  ../c6
+cd ../c6/
+cp /home/nil/Downloads/0636920003434-master/code/chapter6/james2.txt 
+ls
