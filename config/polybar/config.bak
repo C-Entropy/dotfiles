@@ -76,17 +76,15 @@ spacing = 2
 padding-right = 5
 module-margin = 4
 
-font-0 = WenQuanYi Micro Hei:size=12:antialias=true;4
+font-0 = Fira Sans:size=12:weight=regular;4
 font-1 = FontAwesome:pixelsize=12:antialias=true;4
 font-2 = MaterialIcons:size=12:antialias=true;4
 font-3 = TerminessTTF Nerd Font:size=12:antialias=true;4
-font-4 = NotoEmoji Nerd Font Mono:size=12:antialias=true;4
-font-5 = Unifont:size=12;4
-font-6 = Unifont Upper:size=12;4
+font-4 = WenQuanYi Micro Hei:size=12:antialias=true;4
 
-modules-left = battery temperature wlan 
-modules-center = date 
-modules-right = mpd volume backlight-acpi
+modules-left = battery wlan temperature xwindow
+modules-center = date
+modules-right = volume backlight-acpi
 
 [bar/bottom]
 monitor = eDP-1
@@ -106,21 +104,13 @@ module-margin-left = 0
 module-margin-right = 6
 
 
-
-font-0 = WenQuanYi Micro Hei:size=12:antialias=true;4
+font-0 = Fira Sans:size=12:weight=regular;4
 font-1 = FontAwesome:pixelsize=12:antialias=true;4
 font-2 = MaterialIcons:size=12:antialias=true;4
 font-3 = TerminessTTF Nerd Font:size=12:antialias=true;4
-font-4 = NotoEmoji Nerd Font Mono:size=12:antialias=true;4
-font-5 = Unifont Upper:size=12;4
-font-6 = Unifont:size=12;4
-;font-0 = Fira Sans:size=12:weight=regular;4
-;font-1 = FontAwesome:pixelsize=12:antialias=true;4
-;font-2 = MaterialIcons:size=12:antialias=true;4
-;font-3 = TerminessTTF Nerd Font:size=12:antialias=true;4
-;font-4 = WenQuanYi Micro Hei:size=12:antialias=true;4
+font-4 = WenQuanYi Micro Hei:size=12:antialias=true;4
 
-modules-left = xwindow
+modules-left = mpd
 modules-center = i3
 modules-right = filesystem cpu memory 
 
@@ -191,8 +181,8 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <ramp> <label>
-label = "%percentage%%"
+format = <label>
+label = ":%percentage%%"
 
 
 ; Only applies if <ramp> is used
@@ -313,7 +303,7 @@ label = %date% %time%
 type = internal/volume
 
 ;format-volume = <label-volume> <bar-volume>
-format-volume = <label-volume> 
+format-volume = <label-volume>
 label-volume = " %percentage%%"
 label-volume-foreground = ${root.foreground}
 
@@ -321,9 +311,22 @@ format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = muted
 
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
+bar-volume-width = 5
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
@@ -375,7 +378,7 @@ port = 6600
 
 ; Seconds to sleep between progressbar/song timer sync
 ; Default: 1
-interval = 2
+interval = 1
 
 ; Available tags:
 ;   <label-song> (default)
@@ -395,7 +398,7 @@ interval = 2
 ;   <icon-next>
 ;   <icon-seekb>
 ;   <icon-seekf>
-format-online = <label-song> <label-time> <bar-progress> <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+format-online = <label-song> <icon-seekb> <toggle> <icon-seekf> <icon-repeat> <icon-random>  <bar-progress> <label-time> 
 ;format-playing = ${self.format-online}
 ;format-paused = ${self.format-online}
 ;format-stopped = ${self.format-online}
@@ -411,7 +414,7 @@ format-online = <label-song> <label-time> <bar-progress> <icon-prev> <icon-seekb
 ;   %date%
 ;   %title%
 ; Default: %artist% - %title%
-label-song = 𝄞<%title%>
+label-song = %artist% - %title%
 
 ; Available tokens:
 ;   %elapsed%
@@ -421,7 +424,7 @@ label-time = %elapsed% / %total%
 
 ; Available tokens:
 ;   None
-;label-offline =  mpd is offline
+label-offline = 🎜 mpd is offline
 
 ; Only applies if <icon-X> is used
 icon-play = ⏵
@@ -443,7 +446,7 @@ toggle-on-foreground = #ff
 toggle-off-foreground = #55
 
 ; Only applies if <bar-progress> is used
-bar-progress-width = 10
+bar-progress-width = 15
 bar-progress-indicator = |
 bar-progress-fill = ─
 bar-progress-empty = ─
