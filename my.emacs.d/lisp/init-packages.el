@@ -5,18 +5,19 @@
 ;; |\/|  /\  |\ |  /\  / _` |__   |\/| |__  |\ |  |
 ;; |  | /~~\ | \| /~~\ \__> |___  |  | |___ | \|  |
 (when (>= emacs-major-version 24)
-    (require 'package)
-    (package-initialize)
-    (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			 ("melpa" . "http://elpa.emacs-china.org/melpa/"))))
+  (require 'package)
+  (package-initialize)
+  (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+			   ("melpa" . "http://elpa.emacs-china.org/melpa/"))))
 
 ;; cl - Common Lisp Extension
 (require 'cl)
 
 
+
 (defvar MorosithII/packages '(
 			      ;; --- Auto-completion ---
-			      auto-complete
+			      ;;auto-complete
 			      ;; --- Better Editor ---
 			      smooth-scrolling
 			      hungry-delete
@@ -28,17 +29,21 @@
 			      nodejs-repl
 			      popwin
 			      window-numbering
+			      flycheck
+			      exec-path-from-shell
+			      rainbow-delimiters
 			      ;; --- Major Mode ---
 			      js2-mode
+			      json-mode
+			      web-mode
 			      markdown-mode
+			      lua-mode
 			      ;;python
 			      elpy
-			      flycheck
 			      ;;theme
-			      solarized-theme
 			      nyan-mode
-			      ;;common lisp
-			      slime
+			      solarized-theme
+			      apropospriate-theme
 			      )"Default packages")
 
 (setq package-selected-packages MorosithII/packages)
@@ -67,7 +72,9 @@
 ;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
 (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
-
+(setq show-paren-style 'expression)
+(require 'rainbow-delimiters)
+(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
@@ -79,15 +86,14 @@
        '(("\\.js\\'" . js2-mode))
        auto-mode-alist))
 
-(ac-config-default)
-
+(add-hook 'after-init-hook 'global-company-mode)
 
 (require 'popwin)    ;;when require, wh(setq company-minimum-prefix-length 1)en not require
 (popwin-mode t)
 
- ;;set windows numbering
- (require 'window-numbering)
- (window-numbering-mode 1)
+;;set windows numbering
+(require 'window-numbering)
+(window-numbering-mode 1)
 
 
 ;;python
@@ -101,21 +107,29 @@
 
 ;; Setup load-path, autoloads and your lisp system
 ;; Not needed if you install SLIME via MELPA
-;;(add-to-list 'load-path "~/gitc/slime")
+(setq inferior-lisp-program "sbcl")
 ;;(require 'slime-autoloads)
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
-;;(setq slime-lisp-implementations
-  ;;    '((sbcl ("sbcl" "--core" "sbcl.core-for-slime"))))
+(setq slime-lisp-implementations
+      '((sbcl ("sbcl" "--core" "sbcl.core-for-slime"))))
+(setq slime-contribs '(slime-fancy));;use slime-fancy
+(slime-autodoc-unload);;unload slime-autodoc to prevent unnecessary error messages.
+(slime)
 
-;;(add-to-list 'load-path "~/.emacs.d/others/ecb/")
 ;;(require 'xcscope)
 ;;(require 'ecb)
+(sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)
+(sp-local-pair 'lisp-mode "`" nil :actions nil)
+(sp-local-pair 'lisp-mode "'" nil :actions nil)
+(sp-local-pair 'slime-repl-mode "`" nil :actions nil)
+(sp-local-pair 'slime-repl-mode "'" nil :actions nil)
 
-
+(setq flycheck-javascript-eslint-executable   "/usr/bin/eslint")
+(setq flycheck-eslintrc "~/.eslintrc.json")
 
 ;;nyan-mode
 (nyan-mode t);;启动nyan-mode
 
 (provide 'init-packages)
+
 
 

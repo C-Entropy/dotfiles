@@ -23,7 +23,6 @@
     (setq alpha-list (cdr (append alpha-list (list h))))
     )
 )
-
 ;;; Fira code
 ;; This works when using emacs --daemon + emacsclient
 (add-hook 'after-make-frame-functions (lambda (frame) (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")))
@@ -151,13 +150,4 @@
             ("[^\\+<>]\\(\\+\\)[^\\+<>]"   #Xe16d)
             ("[^\\*/<>]\\(\\*\\)[^\\*/<>]" #Xe16f))))
 
-(defun add-fira-code-symbol-keywords ()
-  (font-lock-add-keywords nil fira-code-font-lock-keywords-alist))
-
-(add-hook 'prog-mode-hook
-          #'add-fira-code-symbol-keywords)
-
-
 (provide 'init-ui)
-
-

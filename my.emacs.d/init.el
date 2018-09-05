@@ -1,5 +1,4 @@
 (package-initialize)
-
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (defun open-my-init-file()
   (interactive)
@@ -19,21 +18,7 @@
 (load-file custom-file)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(slime-autodoc-mode nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -42,7 +27,6 @@
  ;; If there is more than one, they won't work right.
  '(company-idle-delay 0.08)
  '(company-minimum-prefix-length 2)
- '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
