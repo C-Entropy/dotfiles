@@ -1,12 +1,12 @@
-3;----------------------------------------
+;----------------------------------------
 ;To learn more about how to configure Polybar
 ;go to https://github.com/jaagr/polybar
 ;----------------------------------------
 
 [colors]
-background = #504945
+background = #c1ac8b
 background-alt = #444
-foreground = #fbf1c7
+foreground = #465e84
 
 black           = #5b4848
 red          	= #cb6077
@@ -74,7 +74,8 @@ line-size = 16
 
 spacing = 2
 padding-right = 5
-module-margin = 4
+module-margin = 2
+module-margin-left = 2
 
 font-0 = WenQuanYi Micro Hei:size=12:antialias=true;4
 font-1 = FontAwesome:pixelsize=12:antialias=true;4
@@ -84,7 +85,7 @@ font-4 = NotoEmoji Nerd Font Mono:size=12:antialias=true;4
 font-5 = Unifont:size=12;4
 font-6 = Unifont Upper:size=12;4
 
-modules-left = battery temperature wlan 
+modules-left = battery temperature wlan
 modules-center = date 
 modules-right = mpd volume backlight-acpi
 
@@ -102,10 +103,8 @@ line-size = 2
 
 spacing = 3
 padding-right = 4
-module-margin-left = 0
+module-margin-left = 2
 module-margin-right = 6
-
-
 
 font-0 = WenQuanYi Micro Hei:size=12:antialias=true;4
 font-1 = FontAwesome:pixelsize=12:antialias=true;4
@@ -114,11 +113,6 @@ font-3 = TerminessTTF Nerd Font:size=12:antialias=true;4
 font-4 = NotoEmoji Nerd Font Mono:size=12:antialias=true;4
 font-5 = Unifont Upper:size=12;4
 font-6 = Unifont:size=12;4
-;font-0 = Fira Sans:size=12:weight=regular;4
-;font-1 = FontAwesome:pixelsize=12:antialias=true;4
-;font-2 = MaterialIcons:size=12:antialias=true;4
-;font-3 = TerminessTTF Nerd Font:size=12:antialias=true;4
-;font-4 = WenQuanYi Micro Hei:size=12:antialias=true;4
 
 modules-left = xwindow
 modules-center = i3
@@ -126,8 +120,8 @@ modules-right = filesystem cpu memory
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:40:...%
-;format-prefix =  " "
+label = %{F#ebd3ad} %title:0:40:...%%{F-}
+
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.background}
@@ -184,35 +178,15 @@ type = internal/fs
 interval = 25
 mount-0 = /home
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#262d2d} %percentage_used%%%{F-}
 label-unmounted = %mountpoint% 
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <ramp> <label>
-label = "%percentage%%"
-
-
-; Only applies if <ramp> is used
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
-
-bar-width = 5
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
+format = <label>
+label = %{F#ebd3ad} %percentage%%%{F-}
 [module/backlight-acpi]
 inherit = module/xbacklight
 type = internal/backlight
@@ -222,8 +196,8 @@ card = intel_backlight
 type = internal/cpu
 interval = 0.5
 format = <label> <ramp-coreload>
-label = CPU
- 
+label = %{F#262d2d}%{F-}
+label-font =  #262c2c
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
 ramp-coreload-0-foreground = ${colors.green}
@@ -252,69 +226,131 @@ ramp-coreload-7-foreground = ${colors.red}
 [module/memory]
 type = internal/memory
 format = <label><bar-used>
-label = RAM
+label = %{F#262d2d}♌%{F-}
  
 bar-used-width = 10
 bar-used-foreground-0 = ${colors.green}
 bar-used-foreground-1 = ${colors.green}
 bar-used-foreground-2 = ${colors.yellow}
 bar-used-foreground-3 = ${colors.red}
-bar-used-indicator = |
+bar-used-indicator = ⥤
 bar-used-indicator-font = 6
 bar-used-indicator-foreground = ${colors.foreground}
 bar-used-fill = ─
 bar-used-fill-font = 6
 bar-used-empty = ─
 bar-used-empty-font = 6
-bar-used-empty-foreground = #777777
+bar-used-empty-foreground = #262d2d
 
 [module/wlan]
 type = internal/network
 interface = wlp4s0
-interval = 5.0
 
+; Seconds to sleep between updates
+interval = 3.0
+
+; @deprecated: Define min width using token specifiers (%downspeed:min% and %upspeed:min%)
+; Minimum output width of upload/download rate
+; Default: 3
 udspeed-minwidth = 5
 
+; Accumulate values from all interfaces
+; when querying for up/downspeed rate
+; Default: false
+accumulate-stats = true
 
-format-connected = <ramp-signal> <label-connected>
-;format-connected-underline = #9f78e1
-label-connected = %essid%
+; Consider an `UNKNOWN` interface state as up.
+; Some devices have an unknown state, even when they're running
+; Default: false
+unknown-as-up = true
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <label-connected> <ramp-signal> 
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <animation-packetloss> <label-connected>
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+
+label-connected = %{F#ebd3ad} %essid%  %local_ip:8%  %downspeed%  %upspeed%%{F-}
+;label-connected = %essid% %upspeed% %downspeed%
+label-connected-foreground = #eefafafa
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+; Default: (none)
+label-disconnected = 
+label-disconnected-foreground = #66ffffff
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %linkspeed% [wired]
+; Default: (none)
+;label-packetloss = %essid%
+;label-packetloss-foreground = #eefafafa
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
 
 [module/date]
 type = internal/date
 interval = 5
 
 date =
-date-alt = " %Y-%m-%d"
+date-alt = %{F#ebd3ad} %Y-%m-%d%{F-}
 
 time = %H:%M
-time-alt = %H:%M:%S
+time-alt = %{F#ebd3ad} %H:%M:%S%{F-}
 
-format-prefix = 
+
+format-prefix = ☯
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #0a6cf5
 
-label = %date% %time%
+label = %{F#ebd3ad} %date% %time%%{F-}
 
 [module/volume]
 type = internal/volume
 
 ;format-volume = <label-volume> <bar-volume>
 format-volume = <label-volume> 
-label-volume = " %percentage%%"
+label-volume = %{F#ebd3ad}  %percentage%%%{F-}
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
@@ -332,37 +368,31 @@ adapter = AC0
 full-at = 99
  
 format-charging = <animation-charging><label-charging>
-label-charging = "%percentage%%"
+label-charging = %{F#ebd3ad} %percentage%%%{F-}
 format-discharging = <ramp-capacity><label-discharging>
-label-discharging = "%percentage%%"
- 
-ramp-capacity-0 = ""
-ramp-capacity-1 = ""
-ramp-capacity-2 = ""
-ramp-capacity-3 = ""
-ramp-capacity-4 = ""
- 
-animation-charging-0 = ""
-animation-charging-1 = ""
-animation-charging-2 = ""
-animation-charging-3 = ""
-animation-charging-4 = ""
+label-discharging = %{F#ebd3ad} %percentage%%%{F-}
+
+ramp-capacity-0 = %{F#fe6a86} %{F-}
+ramp-capacity-1 = %{F#fffd69} %{F-}
+ramp-capacity-2 = %{F#e0ff4d} %{F-}
+ramp-capacity-3 = %{F#26ffec} %{F-}
+ramp-capacity-4 = %{F#ebd3ad} %{F-}
+
+animation-charging-0 = %{F#ebd3ad} %{F-}
+animation-charging-1 = %{F#ebd3ad} %{F-}
+animation-charging-2 = %{F#ebd3ad} %{F-}
+animation-charging-3 = %{F#ebd3ad} %{F-}
+animation-charging-4 = %{F#ebd3ad} %{F-}
 animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
-format-prefix = " "
+format-prefix = %{F#ebd3ad} %{F-}
+format = <label>
+label = %{F#ebd3ad} %temperature-c%%{F-}
 
-[module/player-cmus]
-type = custom/script
-exec = ~/.config/polybar/polybar-scripts/player-cmus/player-cmus.sh
-exec-if = cmus-remote -Q
-interval = 1
-click-left = cmus-remote -n
-click-right = cmus-remote -r
-click-middle = ~/.config/polybar/polybar-scripts/player-cmus/player-cmus-toggle.sh
 
 [module/mpd]
 type = internal/mpd
@@ -395,7 +425,7 @@ interval = 2
 ;   <icon-next>
 ;   <icon-seekb>
 ;   <icon-seekf>
-format-online = <label-song> <label-time> <bar-progress> <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+format-online = %{F#ebd3ad} <label-song> <label-time> <bar-progress> <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>%{F-}
 ;format-playing = ${self.format-online}
 ;format-paused = ${self.format-online}
 ;format-stopped = ${self.format-online}
@@ -411,7 +441,7 @@ format-online = <label-song> <label-time> <bar-progress> <icon-prev> <icon-seekb
 ;   %date%
 ;   %title%
 ; Default: %artist% - %title%
-label-song = 𝄞<%title%>
+label-song = 𝄞<%artist:0:15:...%>-<%title:0:15:...%>
 
 ; Available tokens:
 ;   %elapsed%
@@ -444,7 +474,7 @@ toggle-off-foreground = #55
 
 ; Only applies if <bar-progress> is used
 bar-progress-width = 10
-bar-progress-indicator = |
+bar-progress-indicator = ∮
 bar-progress-fill = ─
 bar-progress-empty = ─
 

@@ -1,4 +1,7 @@
 var:
-  previously_selected_schema: luna_pinyin_simp
+  previously_selected_schema: luna_pinyin_tw
   schema_access_time:
-    luna_pinyin_simp: 1533786182
+    luna_pinyin: 1536226591
+    luna_pinyin_simp: 1536230813
+    luna_pinyin_tw: 1536230962
+    pinyin: 1536230869

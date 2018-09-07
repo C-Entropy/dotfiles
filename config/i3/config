@@ -31,13 +31,14 @@ font fira san 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec st
+#i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
- bindsym $mod+d exec rofi -show run  -lines 3 -width 20 -location 8 -xoffset 170 -yoffset 70 -padding 30 -theme solarized  -font "FiraMono 15"
+ bindsym $mod+d exec rofi -show run  -lines 3 -width 20 -location 8 -xoffset 170 -yoffset 70 -padding 30 -theme
 
 # change focus
 bindsym $mod+j focus left
@@ -127,7 +128,6 @@ bindsym $mod+Shift+0 move container to workspace 10
 assign [class="Emacs"] 2
 assign [class="Firefox"] 3
 
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -163,7 +163,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 #bar {
 #      status_command i3status
-#}
+ #}
 
 # Autostart
 exec feh --bg-scale ~/Media/Pictures/background.jpg
@@ -173,10 +173,8 @@ exec --no-startup-id fcitx
 exec --no-startup-id volumeicon
 exec --no-startup-id .config/polybar/lanunch.sh
 exec --no-startup-id compton &
-exec --no-startup-id st
 exec --no-startup-id mpd
-exec --no-startup-id mpc play
-
+exec --no-startup-id i3-msg "workspace 4; exec st; workspace 1; exec st -ai -e ncmpcpp"
 
 #My bindings
 bindsym XF86AudioMute exec amixer -q set Master toggle

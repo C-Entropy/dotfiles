@@ -1,14 +1,17 @@
 =========================
 FCITX 4.2.9.5 -- Get Signal No.: 11
-Date: try "date -d @1535952355" if you are using GNU date ***
-ProcessID: 29466
-fcitx(+0x1617)[0x55ac82e46617]
-/lib64/libc.so.6(+0x36050)[0x7f51d1e3a050]
-/usr/lib64/libdbus-1.so.3(dbus_watch_get_enabled+0x0)[0x7f51d1114bd0]
-/usr/lib64/fcitx/fcitx-dbus.so(+0x22f5)[0x7f51d13342f5]
-/usr/lib64/fcitx/fcitx-dbus.so(+0x24e1)[0x7f51d13344e1]
-/usr/lib64/libfcitx-core.so.0(+0xa2f4)[0x7f51d281c2f4]
-/usr/lib64/libfcitx-core.so.0(FcitxInstanceRun+0x3f)[0x7f51d281ca9f]
-fcitx(+0xf5c)[0x55ac82e45f5c]
-/lib64/libc.so.6(__libc_start_main+0xea)[0x7f51d1e24f0a]
-fcitx(+0xfda)[0x55ac82e45fda]
+Date: try "date -d @1536295207" if you are using GNU date ***
+ProcessID: 3259
+/usr/bin/fcitx(+0x1617)[0x565396af7617]
+/lib64/libc.so.6(+0x36050)[0x7f87167e5050]
+/usr/lib64/fcitx/fcitx-vk.so(+0x4659)[0x7f87075de659]
+/usr/lib64/fcitx/fcitx-vk.so(+0x2de0)[0x7f87075dcde0]
+/usr/lib64/fcitx/fcitx-vk.so(+0x318d)[0x7f87075dd18d]
+/usr/lib64/fcitx/fcitx-classic-ui.so(+0xb035)[0x7f86ff96c035]
+/usr/lib64/fcitx/fcitx-x11.so(+0x30a2)[0x7f87158930a2]
+/usr/lib64/fcitx/fcitx-x11.so(+0x31bd)[0x7f87158931bd]
+/usr/lib64/libfcitx-core.so.0(+0xa2f4)[0x7f87171c72f4]
+/usr/lib64/libfcitx-core.so.0(FcitxInstanceRun+0x3f)[0x7f87171c7a9f]
+/usr/bin/fcitx(+0xf5c)[0x565396af6f5c]
+/lib64/libc.so.6(__libc_start_main+0xea)[0x7f87167cff0a]
+/usr/bin/fcitx(+0xfda)[0x565396af6fda]

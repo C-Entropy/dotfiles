@@ -1,0 +1,43 @@
+VirtualBox XPCOM Server 5.2.16 r123759 linux.amd64 (Jul 16 2018 17:20:26) release log
+00:00:00.000219 main     Log opened 2018-09-06T05:51:37.323388000Z
+00:00:00.000220 main     Build Type: release
+00:00:00.000223 main     OS Product: Linux
+00:00:00.000223 main     OS Release: 4.14.65-gentoo
+00:00:00.000224 main     OS Version: #1 SMP Mon Sep 3 11:02:17 CST 2018
+00:00:00.000243 main     DMI Product Name: CN85S
+00:00:00.000250 main     DMI Product Version: Not Applicable                  
+00:00:00.000284 main     Host RAM: 7740MB (7.5GB) total, 6165MB (6.0GB) available
+00:00:00.000287 main     Executable: /opt/VirtualBox/VBoxSVC
+00:00:00.000288 main     Process ID: 8384
+00:00:00.000288 main     Package type: LINUX_64BITS_GENERIC
+00:00:00.001372 main     IPC socket path: /tmp/.vbox-nil-ipc/ipcd
+00:00:00.104207 nspr-2   VirtualBox: object creation starts
+00:00:00.104264 nspr-2   Home directory: '/home/nil/.config/VirtualBox'
+00:00:00.104370 nspr-2   Loading settings file "/home/nil/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:00.105213 nspr-2   USB: Unknown USB device detected (idVendor: 0x8087, idProduct: 0x0a2a)
+00:00:00.105236 nspr-2   Successfully initialised host USB using sysfs
+00:00:00.107393 nspr-2   NetIfAdpCtlOut: VBoxNetAdpCtl: Error while retrieving link speed for wlp4s0: VBoxNetAdpCtl: ioctl failed: Operation not supported
+00:00:00.110041 nspr-2   NAT: resolv.conf: nameserver 192.168.1.1
+00:00:00.110058 nspr-2   HostDnsMonitor: old information
+00:00:00.110061 nspr-2     no server entries
+00:00:00.110063 nspr-2     no domain set
+00:00:00.110065 nspr-2     no search string entries
+00:00:00.110067 nspr-2   HostDnsMonitor: new information
+00:00:00.110068 nspr-2     server 1: 192.168.1.1
+00:00:00.110070 nspr-2     no domain set
+00:00:00.110072 nspr-2     no search string entries
+00:00:00.110079 nspr-2   HostDnsMonitorProxy::notify
+00:00:00.111026 nspr-2   Failed to open "/dev/vboxdrvu", errno=2, rc=VERR_VM_DRIVER_NOT_INSTALLED
+00:00:00.113032 nspr-2   failed to create vboxnet0, error (0x80004005)
+00:00:00.113394 nspr-2   VD: VDInit finished with VINF_SUCCESS
+00:00:00.116294 nspr-2   Loading settings file "/home/nil/VirtualBox VMs/winnnnn7/winnnnn7.vbox" with version "1.15-linux"
+00:00:00.117448 nspr-2   VirtualBox: object created
+00:00:04.604479 nspr-3   Saving settings file "/home/nil/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:04.810281 nspr-3   Saving settings file "/home/nil/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:04.979613 nspr-3   Saving settings file "/home/nil/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:05.076996 nspr-2   Saving settings file "/home/nil/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:10.679027 main     VirtualBox: object deletion starts
+00:00:10.679080 main     ERROR [COM]: aRC=VBOX_E_OBJECT_IN_USE (0x80bb000c) aIID={4afe423b-43e0-e9d0-82e8-ceb307940dda} aComponent={MediumWrap} aText={Medium '/home/nil/VirtualBox VMs/winnnnn7/winnnnn7.vdi' cannot be closed because it is still attached to 1 virtual machines}, preserve=false aResultDetail=0
+00:00:11.120244 Watcher  ERROR [COM]: aRC=E_ACCESSDENIED (0x80070005) aIID={9570b9d5-f1a1-448a-10c5-e12f5285adad} aComponent={VirtualBoxWrap} aText={The object is not ready}, preserve=false aResultDetail=0
+00:00:15.679499 main     {00007f9660019070} HostPowerServiceLinux::~HostPowerServiceLinux: RTThreadWait() for 5000 ms failed with VERR_TIMEOUT
+00:00:15.680024 main     VirtualBox: object deleted

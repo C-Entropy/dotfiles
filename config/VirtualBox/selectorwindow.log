@@ -1,0 +1,16 @@
+VirtualBox GUI VM Selector Window 5.2.16 r123759 linux.amd64 (Jul 16 2018 17:20:26) release log
+00:00:00.086589 Log opened 2018-09-07T02:43:34.705932000Z
+00:00:00.086590 Build Type: release
+00:00:00.086591 OS Product: Linux
+00:00:00.086592 OS Release: 4.14.65-gentoo
+00:00:00.086593 OS Version: #1 SMP Mon Sep 3 11:02:17 CST 2018
+00:00:00.086607 DMI Product Name: CN85S
+00:00:00.086613 DMI Product Version: Not Applicable                  
+00:00:00.086644 Host RAM: 7740MB (7.5GB) total, 6676MB (6.5GB) available
+00:00:00.086647 Executable: /opt/VirtualBox/VirtualBox
+00:00:00.086647 Process ID: 13286
+00:00:00.086648 Package type: LINUX_64BITS_GENERIC
+00:00:00.086661 Qt version: 5.6.1
+00:00:00.099538 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.181227 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:00.203726 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: 12x39 x 943x1000

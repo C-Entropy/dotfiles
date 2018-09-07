@@ -1,0 +1,34 @@
+﻿# Rime schema
+# Dvorak
+# encoding: utf-8
+
+schema:
+  schema_id: pinyin
+  name: "拼音字母"
+  version: "1.0"
+  author:
+    - Mijiag
+  description: "汉语拼音字母"
+
+engine:
+  processors:
+    - punctuator
+    - selector
+    - express_editor
+  segmentors:
+    - punct_segmentor
+  translators:
+    - punct_translator
+
+
+punctuator:
+  half_shape: &symtable
+    "a" : [ ā, á, ǎ, à, ɑ, a]
+    "o" : [ ō, ó, ǒ, ò, o]
+    "e" : [ ē, é, ě, è, e, ê]
+    "i" : [ ī, í, ǐ, ì, i]
+    "u" : [ ū, ú, ǔ, ù, u]
+    "v" : [ ǖ, ǘ, ǚ, ǜ, ü, v]
+    "g" : [ ɡ, g]
+  full_shape: *symtable
+
